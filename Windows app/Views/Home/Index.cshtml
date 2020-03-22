@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Index";
+
+}
+@model Windows_app.ViewModels.HomeViewModel;
+
+<h1>Index</h1>
+
+@*<a asp-controller="Home" asp-action="Create" title="Go to Create">Go to Create</a>*@
+
+@Html.ActionLink("Go to Create", "Create", "home")
+
+@for (int i = 0; i < Model.employees.Count; i++)
+{
+    @:Employee Name :@Model.employees[i].FirstName  @Model.employees[i].LastName
+       var routeData = new Dictionary<string, string>();
+        routeData.Add("EmployeeID", Model.employees[i].EmployeeID.ToString());
+        
+    <a asp-controller="Home" asp-action="Detail" asp-all-route-data="routeData">Click on link to view details </a>
+
+}
